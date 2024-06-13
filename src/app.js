@@ -1,11 +1,25 @@
-/* eslint-disable */
-import "bootstrap";
-import "./style.css";
+let pronouns = ["he", "she", "it", "la"];
+let adjectives = ["happy", "sad", "angry", "cueva"];
+let nouns = ["dog", "cat", "mouse", "delTio"];
+let extensions = [".com", ".net", ".us", ".io"];
 
-import "./assets/img/rigo-baby.jpg";
-import "./assets/img/4geeks.ico";
+const names = [];
 
-window.onload = function() {
-  //write your code here
-  console.log("Hello Rigo from the console!");
-};
+for (const pronoun of pronouns) {
+  for (const adj of adjectives) {
+    for (const noun of nouns) {
+      for (const extension of extensions) {
+        let domainName = pronoun + adj + noun;
+        if (domainName.endsWith(extension.replace(".", ""))) {
+          domainName = domainName.slice(
+            0,
+            domainName.length - extension.replace(".", "").length
+          );
+        }
+        names.push(`${domainName}${extension}`);
+      }
+    }
+  }
+}
+
+console.log(names);
